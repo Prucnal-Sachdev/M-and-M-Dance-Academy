@@ -1,0 +1,178 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url';
+import { site, hours, proof, classes, groups, levels, alumni } from '../data/site';
+
+const title = 'M & M Dance Academy | Dance Classes in Monroeville, PA';
+const description =
+  'Thirty years of dance classes in Monroeville, PA. Ballet, tap, jazz, hip-hop, acro-gymnastics and musical theater for ages two and a half through high school, plus adult tap.';
+---
+
+<Base title={title} description={description} preloadImage="/images/hero.jpg">
+  <section class="hero" id="top">
+    <div class="hero__media">
+      <img src={url('/images/hero.jpg')} alt="" width="1140" height="500" fetchpriority="high" />
+    </div>
+    <div class="wrap hero__in">
+      <p class="eyebrow">{site.yearsPhrase} in Monroeville</p>
+      <h1>Where Monroeville learns to dance.</h1>
+      <p>
+        Ballet, tap, jazz, hip-hop, acro and musical theater, from two-and-a-half-year-olds
+        through high school &mdash; and a tap class for the grown-ups. {site.mission}
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--red" href="#register">Fall registration</a>
+        <a class="btn btn--ghost" href="#classes">See the classes</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="wrap">
+      <div class="proof__grid">
+        {proof.map((p) => (
+          <div class="proof__cell">
+            <strong>{p.figure}</strong>
+            <span>{p.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="classes">
+    <div class="wrap">
+      <p class="eyebrow">Classes</p>
+      <h2>Eleven styles, every age and ability.</h2>
+      <p class="lede">
+        There is something here for a two-year-old who has never taken a class and for a
+        dancer training six days a week. If you are not sure where your child fits, call
+        and ask &mdash; that is what placement is for.
+      </p>
+      <ul class="pills">
+        {classes.map((c) => <li>{c}</li>)}
+      </ul>
+
+      <div class="grid grid--3" style="margin-top:clamp(2.5rem,6vw,3.5rem)">
+        {groups.map((g) => (
+          <div class="card">
+            <img src={url(g.image)} alt={g.alt} width="1140" height="500" loading="lazy" />
+            <div class="card__body">
+              <p class="card__ages">{g.ages}</p>
+              <h3>{g.name}</h3>
+              <p>{g.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft" id="levels">
+    <div class="wrap">
+      <p class="eyebrow">Competing, or not</p>
+      <h2>Three levels, and no pressure to move up.</h2>
+      <p class="lede">
+        Our emphasis is never on winning, but on becoming a good performer and enjoying
+        the doing of it. Plenty of dancers stay recreational for years, and that is a
+        perfectly good place to be.
+      </p>
+      <div class="grid grid--3" style="margin-top:2.4rem">
+        {levels.map((l) => (
+          <div class="level">
+            <h3>{l.name}</h3>
+            <p>{l.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="alumni">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Where our dancers go</p>
+        <h2>Thirty years of them.</h2>
+        <p>
+          The point of a dance class at five is rarely a career in dance. It is confidence,
+          and the discipline of turning up and working at something. But some of them do
+          take it a long way, and we are proud of every one.
+        </p>
+        <ul class="checks">
+          {alumni.map((a) => <li>{a}</li>)}
+        </ul>
+      </div>
+      <div>
+        <img src={url('/images/stage.jpg')} alt="M &amp; M Dance Academy dancers performing on stage" width="1140" height="500" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream" id="register">
+    <div class="wrap">
+      <p class="eyebrow">Registration</p>
+      <h2>Fall registration for 2026&ndash;27 is open.</h2>
+      <p class="lede">
+        Registration and the supply list for the coming season are both available. For
+        placement in a hip-hop team or the dance company, email us and we will sort out
+        where your dancer should start.
+      </p>
+
+      <div class="visit" style="margin-top:2.5rem">
+        <div class="panel">
+          <h3>Start here</h3>
+          <p style="font-size:.96rem">
+            Email or call and tell us your dancer's age and whether they have danced before.
+            We will tell you which class to try. There is no charge to ask.
+          </p>
+          <p style="margin-top:1.3rem">
+            <a class="btn btn--red" href={`mailto:${site.email}`}>Email the studio</a>
+          </p>
+          <p style="margin:.7rem 0 0">
+            <a class="btn btn--outline" href={site.phoneHref}>Call {site.phone}</a>
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>Office hours</h3>
+          <table class="hours">
+            <tbody>
+              {hours.map((h) => (
+                <tr>
+                  <th scope="row">{h.day}</th>
+                  <td class={h.open ? '' : 'closed'}>{h.open ? `${h.open} – ${h.close}` : h.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p style="font-size:.86rem;margin:1rem 0 0;color:var(--ink-faint)">
+            Class times run later than the office; ask when you enquire.
+          </p>
+        </div>
+
+        <div class="panel" id="visit">
+          <h3>Find the studio</h3>
+          <dl class="detail">
+            <div>
+              <dt>Studio</dt>
+              <dd>
+                <a href={site.mapsUrl} target="_blank" rel="noopener">
+                  {site.address.street}, {site.address.suite}<br />
+                  {site.address.city}, {site.address.state} {site.address.zip}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>Call</dt>
+              <dd><a href={site.phoneHref}>{site.phone}</a></dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

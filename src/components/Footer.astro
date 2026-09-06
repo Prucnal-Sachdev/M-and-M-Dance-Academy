@@ -1,0 +1,41 @@
+---
+import { site, hours } from '../data/site';
+// Computed at build time. Their current site has no copyright year anywhere.
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <h4>M &amp; M Dance Academy</h4>
+        <p>{site.mission}</p>
+        <p><a href={site.instagram} target="_blank" rel="noopener">Instagram</a></p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <p>
+          <a href={site.mapsUrl} target="_blank" rel="noopener">
+            {site.address.street}, {site.address.suite}<br />
+            {site.address.city}, {site.address.state} {site.address.zip}
+          </a>
+        </p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href={site.phoneHref}>{site.phone}</a></p>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+      </div>
+      <div>
+        <h4>Office hours</h4>
+        {hours.map((h) => (
+          <p style="margin:0">{h.day} &nbsp;{h.open ? `${h.open} – ${h.close}` : h.note}</p>
+        ))}
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; {year} M &amp; M Dance Academy. All rights reserved.</span>
+      <span>Monroeville, Pennsylvania</span>
+    </div>
+  </div>
+</footer>

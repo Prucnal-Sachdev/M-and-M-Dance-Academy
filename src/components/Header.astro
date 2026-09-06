@@ -1,0 +1,29 @@
+---
+import { url } from '../lib/url';
+import { site } from '../data/site';
+---
+
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span>{site.address.street}, {site.address.suite} &middot; {site.address.city}, {site.address.state}</span>
+    <span>Mon&ndash;Thu 4:30&ndash;8:30 &middot; Sat 10&ndash;1</span>
+    <a href={site.phoneHref}>{site.phone}</a>
+  </div>
+</div>
+
+<header class="header">
+  <div class="wrap header__in">
+    <a class="brand" href="#top" aria-label="M &amp; M Dance Academy, home">
+      <img src={url('/images/logo.png')} alt="M &amp; M Dance Academy" width="1000" height="466" />
+    </a>
+    <nav class="nav" aria-label="Main">
+      <span class="nav__links">
+        <a href="#classes">Classes</a>
+        <a href="#levels">Competing</a>
+        <a href="#alumni">Our dancers</a>
+        <a href="#visit">Visit</a>
+      </span>
+      <a class="btn btn--white" href="#register">Register</a>
+    </nav>
+  </div>
+</header>
