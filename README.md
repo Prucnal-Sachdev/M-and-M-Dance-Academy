@@ -3,7 +3,7 @@
 A speculative rebuild of the homepage for M & M Dance Academy (Monroeville, PA), built by
 Prucnal & Sachdev. Not commissioned; built to show what the site could be.
 
-- **Preview:** https://prucnalj.github.io/M-and-M-Dance-Academy/ (built `noindex`, so it
+- **Preview:** https://prucnal-sachdev.github.io/M-and-M-Dance-Academy/ (built `noindex`, so it
   never competes with their live site in search)
 - **Their current site:** https://www.mmdanceacademy.com
 - **Open questions:** [CONTENT-NEEDED.md](CONTENT-NEEDED.md)
@@ -49,6 +49,6 @@ Building the way the preview builds — note `MSYS_NO_PATHCONV=1`, without which
 rewrites `BASE_PATH` into a Windows path and every URL in the output is silently wrong:
 
 ```bash
-MSYS_NO_PATHCONV=1 SITE_URL=https://prucnalj.github.io BASE_PATH=/M-and-M-Dance-Academy \
+MSYS_NO_PATHCONV=1 SITE_URL=https://prucnal-sachdev.github.io BASE_PATH=/M-and-M-Dance-Academy \
   PUBLIC_NOINDEX=1 npm run build
 ```

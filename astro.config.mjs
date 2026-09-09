@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 // Production values. The GitHub Pages preview workflow (.github/workflows/pages.yml)
-// overrides both so the site can be served from https://prucnalj.github.io/M-and-M-Dance-Academy/.
+// overrides both so the site can be served from https://prucnal-sachdev.github.io/M-and-M-Dance-Academy/.
 const site = process.env.SITE_URL ?? 'https://mmdanceacademy.com';
 const base = process.env.BASE_PATH ?? '/';
 
